@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="tunely">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="/vendor/angular/angular.min.js"></script>
-    <script src="/vendor/angular-route/angular-route.min.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-route/angular-route.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
@@ -24,6 +24,15 @@
       <div class="container">
         <h1>Welcome to tunely</h1>
         <p>Your music binder!</p>
+      </div>
+    </div>
+
+    <div class="container" ng-controller="AlbumsIndexController as albumsIndexCtrl">
+      <span>Search Music:</span>
+      <input type="text" ng-model="searchAlbumsIndexCtrl">
+      <div class="container card" ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter:searchAlbumsIndexCtrl">
+        <h3>{{album.name}}</h3>
+        <h5>{{album.artistName}}</h5>
       </div>
     </div>
   </body>
